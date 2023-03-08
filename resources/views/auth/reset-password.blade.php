@@ -14,7 +14,16 @@
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-                    <x-validation-errors class="mb-4" />
+                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf

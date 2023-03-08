@@ -17,12 +17,21 @@
                     </div>
 
                     @if (session('status'))
-                        <div class="mb-4 font-medium text-sm text-green-600">
-                            {{ session('status') }}
+                        <div class="alert alert-success">
+                            <li>{{ session('status') }}</li>
                         </div>
                     @endif
 
-        <x-validation-errors class="mb-4" />
+        
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf

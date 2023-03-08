@@ -20,6 +20,17 @@
                         <div class="divider d-flex align-items-center my-4">
                             <h2 class='logo'>NotePad</h2>
                         </div>
+
+                        
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
             
                         <!-- Email input -->
                         <div class="form-outline mb-4">

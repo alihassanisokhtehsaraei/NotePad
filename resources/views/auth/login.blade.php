@@ -18,12 +18,24 @@
                         </div>
                     @endif
                     
-                    <x-validation-errors class="mb-4" />
+
                   <form method="post" action="{{ route('login') }}">
                         @csrf
                     <div class="divider d-flex align-items-center my-4">
-                        <h2 class='logo'>NotePad</h2>
+                        <h2 class='logo'>NotePad CMS</h2>
                     </div>
+
+                    
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
           
                     <!-- Email input -->
                     <div class="form-outline mb-4">
@@ -53,6 +65,7 @@
                       @endif
                     </div>
           
+
                     <div class="text-center text-lg-start mt-4 pt-2">
                       <input type="submit" class="btn btn-primary btn-lg"
                         style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Log in">
