@@ -11,6 +11,14 @@
 |
 */
 
-Route::prefix('dashboard')->group(function() {
-    Route::get('/', 'DashboardController@index');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::prefix('dashboard')->group(function() {
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+    });
 });
+
+
